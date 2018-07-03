@@ -7,7 +7,7 @@ from nltk.stem.snowball import SnowballStemmer
 language  = 'english'
 stopwords = set(nltk.corpus.stopwords.words(language))
 stemmer   = SnowballStemmer(language)
-symbolcut = re.sub(r'[^\w]', '', s)
+symbolcut = lambda s: re.sub(r'[^\w]', '', s)
 
 from collections import Counter
 
@@ -18,7 +18,7 @@ def tokenize(contents):
     return tokens
 
 
-def process(tokens)
+def process(tokens):
     isnotstop = lambda s: s not in stopwords
     isword    = partial(re.search, '^[A-Za-z]*$')
 
