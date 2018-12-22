@@ -6,3 +6,8 @@ matplotlib
 wordcloud
 jupyter
 requests
+cartopy
+scipy
+folium
+mpld3
+pygal
