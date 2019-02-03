@@ -1,0 +1,154 @@
+\documentclass{article}
+
+\usepackage[affil-it]{authblk}
+
+\usepackage[USenglish,american]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+
+\usepackage{cite}
+
+\usepackage{amsfonts,amsmath,amsthm,amssymb}
+
+\usepackage{tikz,pgf}
+\usetikzlibrary{fit}
+
+\usepackage{csvsimple}
+
+%\pagestyle{empty}
+\setlength{\parindent}{0mm}
+\usepackage[letterpaper, margin=1in]{geometry}
+%\usepackage{showframe}
+
+\usepackage{multicol}
+\usepackage{enumerate}
+
+\usepackage{verbatim}
+\usepackage{listings}
+
+\usepackage{color}
+
+%%
+%% Julia definition (c) 2014 Jubobs
+%%
+\lstdefinelanguage{Julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+      using,while},%
+   sensitive=true,%
+   alsoother={$},%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
+
+\lstset{%
+    language         = Python,
+    basicstyle       = \footnotesize\ttfamily,,
+    keywordstyle     = \bfseries\color{blue},
+    stringstyle      = \color{magenta},
+    commentstyle     = \color{red},
+    showstringspaces = false,
+    backgroundcolor  = \color{lightgray},
+    numbers          = left,
+    title            = \lstname,
+    numberstyle      = \tiny\color{lightgray}\ttfamily,
+}
+
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{cite}
+
+\usepackage{titlesec}
+\titlespacing*{\subsubsection}{0pt}{*0}{*0}
+\titlespacing*{\subsection}{0pt}{0pt}{*0}
+\titlespacing*{\section}{0pt}{0pt}{*0}
+
+\newcommand{\Bold}{\mathbf}
+
+\setlength{\parskip}{1em}
+%\setlength{\parindent}{1em}
+
+\title{Named Entity Boosted Topic Models for like Clinical Trial Strategies in Multiple Myeloma}
+\date{\today}
+\author{Philip Robinson}
+\affil{OHSU: Center for Speach and Learning Understanding}
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+%   is neat\cite{Krasnashchok2018ImprovingTQ}
+%\end{abstract}
+
+% http://www.sfp.caltech.edu/students/proposal/other_project_plans
+% https://trs.jpl.nasa.gov/
+
+\begin{multicols}{2}
+
+\section{Proposal}
+When a patient is forced down the track of clinical trials, their ability to make informed medical and life decisions can be greatly limited by the vast amount of information in both structured and unstructured text. Inability to efficiently skim through this information also limits their communication bandwidth with medical professionals.
+
+In the case of Myeloma, several trial immunotherapy strategies exist. Traditional treatments of multiple Myeloma focus on persistent reduction in plasma cells with maintenance therapy. More recently, strategies are broken down to specific modifications or implementations CAR-T, BiTEs, and Immuno Checkpoint Inhibitors, for example. Specific cases of CAR-T (chimeric antigen receptor) treatments include strategies targeting BCMA, CD138, and CD19 ( and others ) antigens. As an example, Chimeric antigen receptor T-cell (CAR-T) strategies genetically modify T-Cells to include a linker designed to bind with a specific antigen expressed on the target diseased cell. The modified T-Cell recognizes or has specificity to the antigen on the diseased cell, and, once bound, is activated thereby killing the cancer.
+
+Given that these clinical trials are described by natural text, there is advantage in applying Natural Language Processing techniques to aid patients and doctors. In particular automatic organization by grouping like documents can significantly reduce human research time, commonly called topic modeling\cite{Alghamdi2015}.
+
+Unfortunately, most of these strategies aren't able to prioritize and discover important or influential words. To identify important words, there is a second task called named entity recognition where domain knowledge is used to identify important words. CliNER\cite{2018arXiv180302245B}, is a named entity recognizer specifically trained to recognize medical terms. Biasing our learned topics, by prioritizing named entities, results in far more informative clusters\cite{Krasnashchok2018ImprovingTQ,Kim:2012:EET:2471881.2472545}.
+
+I hypothesis that mixing these two strategies, and applying them to the clinical trials database, would allow for informed biasing without manually setting theoretical priors on our topics. In particular, CliNER also annotates entities with a category for the found entities. This should allow for different up-weighting on a per-category basis.
+
+%For my project, I would like to work towards a semi supervised non-parametric topic modeling system in order to Cluster classes of treatment strategies. This model would likely need to be informed by a named entity recognizer, and possibly some taxonomic constraints, which would be the semi supervising material. I don't yet know how the clustering model would be best informed.
+
+\begin{comment}
+\section{Objectives}
+
+
+\section{Approach}
+
+
+\section{Dragons}
+
+
+\section{Evaluation}
+
+
+\section{Schedule}
+
+\begin{enumerate}[\texttt{WK} 1 -]
+  \setcounter{enumi}{-1}
+\item Setup
+  \begin{itemize}
+  \item Gain access to data
+  \item appraise proposal
+  \item document target UX for final project
+  \item read and explore examples from data set
+  \item draft or adopt normalization strategy
+  \item divide into toy, train, and test sets
+  \item discuss/establish evaluation strategies
+  \end{itemize}
+\item Explore common clustering
+  \begin{itemize}
+  \item without authors
+  \item with and without fields
+  \end{itemize}
+\item Explore clustering with author modeling, and compare improvements
+\item Extend some topic-models with author-topic-modeling
+\item (3 - continued)
+\item (3 - continued), Data Store, RESTful API
+\item (5 - continued), UI
+\item Evaluation, performance, and stability metric
+\item User testing, asses incorporating new documents
+\item Reporting
+\end{enumerate}
+
+\section{Comments}
+\end{comment}
+
+\bibliography{references.bib}{}
+\bibliographystyle{plain}
+\end{multicols}
+
+\end{document}
